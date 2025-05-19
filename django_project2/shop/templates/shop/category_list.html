@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>კატეგორიები</title>
+</head>
+<body>
+    <h1>კატეგორიების ჩამონათვალი</h1>
+    <ul>
+        {% for category in categories %}
+            <li>
+                <a href="{% url 'shop:category_detail' category.id %}">
+                    {{ category.name }} ({{ category.product_count }})
+                </a>
+            </li>
+        {% empty %}
+            <li>კატეგორიები არ მოიძებნა</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
