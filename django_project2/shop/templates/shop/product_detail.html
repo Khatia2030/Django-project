@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ product.name }}</title>
+</head>
+<body>
+    <h1>პროდუქტის დეტალები</h1>
+    <ul>
+        <li>დასახელება: {{ product.name }}</li>
+        <li>კატეგორია: {{ product.category.name }}</li>
+        <li>ფასი: {{ product.price|floatformat:2 }}</li>
+        <li>რაოდენობა: {{ product.quantity }}</li>
+        <li>ჯამური ღირებულება: {{ product.total_value|floatformat:2 }}</li>
+    </ul>
+    <p><a href="{% url 'shop:category_detail' product.category.id %}">უკან კატეგორიის გვერდზე</a></p>
+</body>
+</html>
