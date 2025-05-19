@@ -1,0 +1,11 @@
+{% extends 'shop/base.html' %}
+
+{% block content %}
+  <h2>პროდუქტის დამატება</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">დამატება</button>
+  </form>
+  <a href="{% url 'shop:category_list' %}">უკან დაბრუნება</a>
+{% endblock %}

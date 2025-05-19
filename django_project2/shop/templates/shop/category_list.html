@@ -1,9 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>კატეგორიები</title>
-</head>
-<body>
+{% extends 'shop/base.html' %}
+
+{% block content %}
     <h1>კატეგორიების ჩამონათვალი</h1>
     <ul>
         {% for category in categories %}
@@ -16,5 +13,4 @@
             <li>კატეგორიები არ მოიძებნა</li>
         {% endfor %}
     </ul>
-</body>
-</html>
+{% endblock %}

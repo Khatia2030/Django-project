@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}მაღაზია{% endblock %}</title>
+    <style>
+        body { font-family: sans-serif; margin: 40px; }
+        nav a { margin-right: 15px; }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="{% url 'shop:category_list' %}">მთავარი</a>
+        <a href="{% url 'shop:add_product' %}">პროდუქტის დამატება</a>
+    </nav>
+    <hr>
+    {% block content %}{% endblock %}
+</body>
+</html>

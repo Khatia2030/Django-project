@@ -37,3 +37,16 @@ def category_detail(request, category_id):
 def product_detail(request, product_id):
     product = get_object_or_404(Product, id=product_id)
     return render(request, 'shop/product_detail.html', {'product': product})
+
+from .forms import ProductForm
+from django.shortcuts import redirect
+
+def add_product(request):
+    if request.method == 'POST':
+        form = ProductForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('shop:category_list')
+    else:
+        form = ProductForm()
+    return render(request, 'shop/add_product.html', {'form': form})

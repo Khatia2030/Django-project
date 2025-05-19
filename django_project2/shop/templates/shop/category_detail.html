@@ -1,34 +1,30 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>{{ category.name }}</title>
-</head>
-<body>
-    <h1 style="text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 32px; color: #2c3e50; margin-top: 30px;">
+{% extends 'shop/base.html' %}
+
+{% block content %}
+<h1 style="text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 32px; color: #2c3e50; margin-top: 30px;">
   კატეგორია: <span style="color: #3498db;">{{ category.name }}</span>
 </h1>
-    <p>პროდუქტების რაოდენობა: {{ products|length }}</p>
+<p>პროდუქტების რაოდენობა: {{ products|length }}</p>
 
-    <h2>პროდუქტების ჩამონათვალი</h2>
-    <ul>
-        {% for product in products %}
-            <li>
-                <a href="{% url 'shop:product_detail' product.id %}">{{ product.name }}</a>
-                - ჯამური ღირებულება: {{ product.total_value|floatformat:2 }}
-            </li>
-        {% empty %}
-            <li>პროდუქტები არ მოიძებნა</li>
-        {% endfor %}
-    </ul>
+<h2>პროდუქტების ჩამონათვალი</h2>
+<ul>
+    {% for product in products %}
+        <li>
+            <a href="{% url 'shop:product_detail' product.id %}">{{ product.name }}</a>
+            - ჯამური ღირებულება: {{ product.total_value|floatformat:2 }}
+        </li>
+    {% empty %}
+        <li>პროდუქტები არ მოიძებნა</li>
+    {% endfor %}
+</ul>
 
-    <h2>სტატისტიკა</h2>
-    <ul>
-        <li>ყველაზე ძვირიანი პროდუქტი: {{ most_expensive.name }} ({{ most_expensive.price|floatformat:2 }})</li>
-        <li>ყველაზე იაფიანი პროდუქტი: {{ cheapest.name }} ({{ cheapest.price|floatformat:2 }})</li>
-        <li>საშუალო ფასი: {{ average_price|floatformat:2 }}</li>
-        <li>ჯამური ღირებულება: {{ total_category_value|floatformat:2 }}</li>
-    </ul>
+<h2>სტატისტიკა</h2>
+<ul>
+    <li>ყველაზე ძვირიანი პროდუქტი: {{ most_expensive.name }} ({{ most_expensive.price|floatformat:2 }})</li>
+    <li>ყველაზე იაფიანი პროდუქტი: {{ cheapest.name }} ({{ cheapest.price|floatformat:2 }})</li>
+    <li>საშუალო ფასი: {{ average_price|floatformat:2 }}</li>
+    <li>ჯამური ღირებულება: {{ total_category_value|floatformat:2 }}</li>
+</ul>
 
-    <p><a href="{% url 'shop:category_list' %}">უკან კატეგორიების სიაში</a></p>
-</body>
-</html>
+<p><a href="{% url 'shop:category_list' %}">უკან კატეგორიების სიაში</a></p>
+{% endblock %}

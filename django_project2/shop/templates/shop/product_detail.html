@@ -1,9 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>{{ product.name }}</title>
-</head>
-<body>
+{% extends 'shop/base.html' %}
+
+{% block content %}
     <h1>პროდუქტის დეტალები</h1>
     <ul>
         <li>დასახელება: {{ product.name }}</li>
@@ -13,5 +10,4 @@
         <li>ჯამური ღირებულება: {{ product.total_value|floatformat:2 }}</li>
     </ul>
     <p><a href="{% url 'shop:category_detail' product.category.id %}">უკან კატეგორიის გვერდზე</a></p>
-</body>
-</html>
+{% endblock %}
