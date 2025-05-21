@@ -1,0 +1,9 @@
+{% extends 'shop/base.html' %} {% block content %}
+<h2>პროდუქტის წაშლა</h2>
+<p>დარწმუნებული ხართ, რომ გსურთ წაშალოთ "{{ object.name }}"?</p>
+<form method="post">
+  {% csrf_token %}
+  <button type="submit">დიახ, წაშალე</button>
+  <a href="{% url 'shop:product_detail' object.id %}">გაუქმება</a>
+</form>
+{% endblock %}
