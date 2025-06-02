@@ -63,3 +63,12 @@ class ProductDeleteView(DeleteView):
 
     def get_success_url(self):
         return reverse_lazy('shop:category_detail', kwargs={'category_id': self.object.category.id})
+    
+from django.contrib.auth import logout
+from django.shortcuts import redirect
+
+def logout_view(request):
+    logout(request)
+    return redirect('login')
+    
+    
