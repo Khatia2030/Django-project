@@ -1,9 +1,40 @@
 {% extends 'shop/base.html' %}
+
 {% block content %}
-<h2>{% if form.instance.pk %}პროდუქტის რედაქტირება{% else %}ახალი პროდუქტი{% endif %}</h2>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">შენახვა</button>
-</form>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+
+            <h2 class="mb-4 text-center">
+                {% if form.instance.pk %}
+                    პროდუქტის რედაქტირება
+                {% else %}
+                    ახალი პროდუქტის დამატება
+                {% endif %}
+            </h2>
+
+            <form method="post" enctype="multipart/form-data" class="border p-4 bg-white shadow rounded">
+                {% csrf_token %}
+
+                {% for field in form %}
+                    <div class="mb-3">
+                        {{ field.label_tag }}
+                        {{ field }}
+                        {% if field.help_text %}
+                            <small class="form-text text-muted">{{ field.help_text }}</small>
+                        {% endif %}
+                        {% if field.errors %}
+                            <div class="text-danger">{{ field.errors }}</div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+
+                <button type="submit" class="btn btn-primary w-100">
+                    შენახვა
+                </button>
+            </form>
+
+        </div>
+    </div>
+</div>
 {% endblock %}
