@@ -54,6 +54,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
+    'shop.middleware.ProductAccessAndTimingMiddleware',
 ]
 
 ROOT_URLCONF = 'django_project2.urls'

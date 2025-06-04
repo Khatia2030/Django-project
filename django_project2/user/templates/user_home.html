@@ -2,6 +2,10 @@
 {% block content %}
 
 <h2 class="text-center mb-4">ყველა პროდუქტი</h2>
+<form method="get" class="d-flex mb-4" role="search">
+    <input type="text" name="q" class="form-control me-2" placeholder="პროდუქტის ძებნა..." value="{{ query }}">
+    <button type="submit" class="btn btn-outline-primary">ძებნა</button>
+</form>
 
 <div class="row">
     {% for product in page_obj %}
